@@ -1,44 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
-import { Container, Grid, ToggleButton, ToggleButtonGroup } from '@mui/material';
-import Welcome from './components/welcome.js';
-import Rule from './components/Rule.js';
-import { Link, Route, Router, Routes } from 'react-router-dom';
-import { Fragment, useState } from "react";
-import Rulebody from './components/RuleBody.js';
+import * as React from 'react';
+import {useEffect, useState} from 'react';
+import ProductHero from './components/modules/views/ProductHero';
+import ProductValues from './components/modules/views/ProductValues';
+import AppAppBar from './components/modules/views/AppAppBar';
+import withRoot from './components/modules/withRoot';
+import {Link, useLocation} from 'react-router-dom';
+import {Box, ToggleButton, ToggleButtonGroup} from '@mui/material';
 
 
-const category = [
-  <ToggleButton value="jacuzzi" LinkComponent={Link} to="Jaccuzi" replace><h3>자쿠지</h3></ToggleButton>,
-  <ToggleButton value="bbq" LinkComponent={Link} to="BBQ" replace><h3>BBQ 바베큐</h3></ToggleButton>,
-  <ToggleButton value="standbyme" LinkComponent={Link} to="StandByMe" replace><h3>스탠바이미(TV)</h3></ToggleButton>
-]
+function Index() {
 
-function App() {
-  const [alignment, setAlignment] = useState('');
-  const handleChange = (event, newAlignment) => {
-    if (newAlignment !== null) {
-      setAlignment(newAlignment);
-    }
-  }
-  return (
-    <Container fixed maxWidth="lg" textAlign={'center'} >
-      <Container fixed maxWidth="md">
-        <Welcome></Welcome>
-      </Container>
-      <hr />
-      <Grid container spacing={0} justifyContent="flex-start" alignItems="flex-start" direction="row">
-        <Grid item xs={2}>
-          <ToggleButtonGroup orientation="vertical" size="small" exclusive color="primary" value={alignment} onChange={handleChange} aria-label="Medium sizes">
-            {category}
-          </ToggleButtonGroup>
-        </Grid>
-        <Grid item xs={10}>
-          <Rule></Rule>
-        </Grid>
-      </Grid>
-    </Container>
-  );
+    const category = [
+        <ToggleButton value="/" LinkComponent={Link} to="/" replace={true}><h3>입실</h3></ToggleButton>,
+        <ToggleButton value="/OutRules" LinkComponent={Link} to="/OutRules" replace={true}><h3>퇴실</h3></ToggleButton>,
+        <ToggleButton value="/Jaccuzi" LinkComponent={Link} to="/Jaccuzi" replace={true}><h3>자쿠지</h3></ToggleButton>,
+        <ToggleButton value="/BBQ" LinkComponent={Link} to="/BBQ" replace={true}><h3>BBQ</h3></ToggleButton>,
+        <ToggleButton value="/Items" LinkComponent={Link} to="/Items" replace={true}><h3>비품 안내</h3></ToggleButton>,
+        <ToggleButton value="/Coffee" LinkComponent={Link} to="/Coffee" replace={true}><h3>커피 머신</h3></ToggleButton>,
+        <ToggleButton value="/StandByMe" LinkComponent={Link} to="/StandByMe" replace={true}><h3>스탠바이미</h3></ToggleButton>,
+        <ToggleButton value="/Warning" LinkComponent={Link} to="/Warning" style={{color: 'red'}} replace={true}><h3>긴급 연락망</h3></ToggleButton>,
+    ]
+
+    const [alignment, setAlignment] = useState('/');
+    const handleChange = (event, newAlignment) => {
+        if (newAlignment !== null) {
+            setAlignment(newAlignment);
+        }
+    };
+    const location = useLocation();
+    useEffect(()=>{
+        const currentPath = location.pathname.replace('/#/', '/');
+        setAlignment(currentPath);
+    },[location])
+
+    return (
+        <React.Fragment>
+            <AppAppBar/>
+            <ProductHero/>
+            <Box justifyContent='center' sx={{backgroundColor: '#fffaf0', pt: 3, pb: 1}}>
+                <Box textAlign='center' justifyContent='center' sx={{pt: 2, ml: 2, mr: 2}}>
+                    <ToggleButtonGroup size="small" fullWidth={true} exclusive value={alignment}
+                                       onChange={handleChange} aria-label="Medium sizes">
+                        {category}
+                    </ToggleButtonGroup>
+                </Box>
+                <ProductValues/>
+            </Box>
+        </React.Fragment>
+    );
 }
 
-export default App;
+export default withRoot(Index);

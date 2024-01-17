@@ -1,7 +1,9 @@
 p{
   font-size: large;
 }
-
+li {
+  margin: 10px 0; /* 위 아래 간격 설정 */
+}
 
 @keyframes cursor{ 
   0%{border-right: 1px solid #fff} 
