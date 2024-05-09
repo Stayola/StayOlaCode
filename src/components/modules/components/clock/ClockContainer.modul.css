@@ -1,0 +1,17 @@
+.neon-pink{
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #407cfd, 0 0 20px #115eff, 0 0 25px #115eff, 0 0 30px #115eff, 0 0 35px #115eff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+.neon-blue{
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #60cdff, 0 0 20px #6cb2ff, 0 0 25px #6cb2ff, 0 0 30px #6cb2ff, 0 0 35px #6cb2ff;
+
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}

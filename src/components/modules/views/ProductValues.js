@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Bbq, CommonRules, Jaccuzi, Warning} from './Rules/CommonRules.js'
+import {Bbq, CommonRule, Items, Jacuzzi, Warning, Coffee, StandByMe, Fire} from './Rules/CommonRule.js'
 import {Box, Container} from '@mui/material'
 import {Route, Routes} from "react-router-dom";
 import OutRules from "./Rules/OutRules";
@@ -20,11 +20,15 @@ function ProductValues() {
                 borderColor: '#fdde6d'
             }}>
                 <Routes>
-                    <Route exact path="/" element={<CommonRules/>} />
-                    <Route exact path="/Jaccuzi" element={<Jaccuzi/>} />
+                    <Route exact path="/" element={<CommonRule/>} />
+                    <Route exact path="/Jaccuzi" element={<Jacuzzi/>} />
                     <Route exact path="/BBQ" element={<Bbq/>} />
+                    <Route exact path="/fire" element={<Fire/>} />
+                    <Route exact path="/Items" element={<Items/>} />
                     <Route exact path="/Warning" element={<Warning/>} />
                     <Route exact path="/OutRules" element={<OutRules/>} />
+                    <Route exact path="/StandByMe" element={<StandByMe/>} />
+                    <Route exact path="/Coffee" element={<Coffee/>} />
                 </Routes>
             </Container>
         </Box>
